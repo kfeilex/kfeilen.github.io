@@ -1,0 +1,5 @@
+title: Welcome to my Gitpage!
+description: These are a the projects for my SNHU Capstone
+remote_theme: pages-themes/slate@v0.2.0
+plugins:
+- jekyll-remote-theme # add this line to the plugins list if you already have one
