@@ -1,0 +1,182 @@
+/*
+*** SQL Trigger Example ***
+Author:  Kenny Feilen
+Date:    10/9/2022
+*/
+
+
+-- *** START RUNNING CODE HERE *** --
+-- Sets up the Orders table
+CREATE TABLE Orders (
+    OrderID INT NOT NULL,
+    CustomerID INT NOT NULL,
+    SKU VARCHAR(20),
+    Description VARCHAR(50),
+    PRIMARY KEY (OrderID)
+);
+
+-- Sets up the Customers table
+CREATE TABLE Customers (
+    CustomerID INT NOT NULL,
+    FirstName VARCHAR(25),
+    LastName VARCHAR(25),
+    Street VARCHAR(50),
+    City VARCHAR(50),
+    State VARCHAR(25),
+    Telephone VARCHAR(15),
+    PRIMARY KEY (CustomerID)
+);
+
+/* Sets up a table to keep track of new orders
+the trigger below runs off of the primary key, "Heading".
+If that is modified, the trigger will break*/
+CREATE TABLE OrderTracker (
+    Heading VARCHAR(25),
+    OrderCount INT,
+    ModifiedDate TIMESTAMP,
+    PRIMARY KEY (Heading)
+);
+-- Setting Order counter to 0 and Heading value for trigger
+INSERT INTO OrderTracker
+    VALUES ('Current Order Count', 0, current_timestamp);
+
+
+/* Trigger to count new orders as they are added
+runs off of the primary key "Heading" */
+DELIMITER @@
+CREATE TRIGGER current_order_count
+	AFTER INSERT ON Orders
+    FOR EACH ROW
+    BEGIN
+		UPDATE OrderTracker
+        SET OrderCount = (OrderCount +1) WHERE Heading = 'Current Order Count';
+    END @@
+DELIMITER ;
+
+-- Table to hold records of deleted orders
+CREATE TABLE DeletedOrders (
+    OrderID INT,
+    CustomerID INT,
+    UserID VARCHAR(255),
+    DeletedDate TIMESTAMP
+);
+
+-- Trigger to record deleted orders
+DELIMITER @@
+CREATE TRIGGER deleted_history
+	BEFORE DELETE ON Orders
+    FOR EACH ROW
+    BEGIN
+		INSERT DeletedOrders
+        (OrderID, CustomerID, UserID, DeletedDate)
+        VALUES (OLD.OrderID, OLD.CustomerID, user(), current_timestamp);
+		UPDATE OrderTracker
+		SET
+			OrderCount = (OrderCount - 1)
+		WHERE
+			Heading = 'Current Order Count';
+	END @@
+DELIMITER ;
+
+
+
+/* Inserts customers into the Customers table.
+Keeping the same theme as the original project */
+INSERT INTO Customers
+VALUES (100004, 'Karl', 'Smith', '938 Ruby Street', 'New York', 'NY', '212-555-1234');
+INSERT INTO Customers
+VALUES (100005, 'Winston', 'Smith', '532 Sycamore Lane', 'Greensboro', 'NC', '919-555-6623');
+INSERT INTO Customers
+VALUES (100006, 'MaryAnne', 'Jenkins', '159 Maiden Street', 'Jupiter', 'FL', '321-555-8907');
+INSERT INTO Customers
+VALUES (100007, 'Janet', 'Williams', '8532 12th Lane ', 'Torrence', 'CA', '310-555-1778');
+INSERT INTO Customers
+VALUES (100008, 'August', 'Jackson', '312 195th Street NE', 'Roy', 'WA', '387-555-5238');
+INSERT INTO Customers
+VALUES (100009, 'Stef', 'Anne', '145 Rockford Blvd', 'Albuquerque', 'MN', '390-555-5212');
+
+
+/*Adding orders to the orders table.
+Keeping the same theme as the original project*/
+INSERT INTO Orders
+    VALUES (1204305, 100004, 'ADV-24-10C', 'Advanced Switch 10GigE Copper 24 port');
+INSERT INTO Orders
+    VALUES (1204306, 100005, 'ADV-48-10F', 'Advanced Switch 10GigE 44 port copper 4 port fiber');
+INSERT INTO Orders
+    VALUES (1204307, 100006, 'ENT-24-10F', 'Enterprise Switch 10GigE SFP+ 24 Port');
+INSERT INTO Orders
+    VALUES (1204308, 100007, 'ENT-48-10F', 'Enterprise Switch 10GigE SFP+ 48 port');
+INSERT INTO Orders
+    VALUES (1204309, 100008, 'ENT-12-10F', 'Enterprise Switch 10GigE SFP+ 12 port');
+INSERT INTO Orders
+    VALUES (1204310, 100009, 'ENT-12-05F', 'Enterprise Switch 5GigE SFP+ 12 port');
+INSERT INTO Orders
+    VALUES (1204311, 100006, 'WI-5G-600', 'WIFI Router 5G 600 Mbps');
+INSERT INTO Orders
+    VALUES (1204312, 100005, 'WI-5G-300', 'WIFI Router 5G 300 Mbps');
+
+
+/*
+-- *** STOP SETUP CODE HERE *** --
+*/
+
+
+
+-- View all orders in the system
+SELECT * FROM Orders;
+
+
+-- View all customers in the system
+SELECT * FROM Customers;
+
+
+-- Search to see customer info from order ID
+SELECT OrderID, FirstName, LastName, State, Telephone FROM Customers
+	INNER JOIN Orders on Customers.CustomerID = Orders.CustomerID
+    ORDER BY OrderID;
+    
+    
+-- View current number of orders in the system with a last modified date
+SELECT * FROM OrderTracker;
+
+
+-- Delete statements for trigger
+DELETE FROM Orders WHERE OrderID = 1204312;
+DELETE FROM Orders WHERE OrderID = 1204311;
+DELETE FROM Orders WHERE OrderID = 1204305;
+DELETE FROM Orders WHERE OrderID = 1204307;
+
+
+-- View deleted orders record with the user ID that processed the delete
+SELECT * FROM DeletedOrders;
+
+
+-- View deleted orders record with the user ID that processed the delete and customer info
+SELECT OrderID, UserID, FirstName, LastName, DeletedDate FROM Customers
+	INNER JOIN DeletedOrders on Customers.CustomerID = DeletedOrders.CustomerID
+    ORDER BY DeletedDate;
+    
+
+
+
+-- View current number of orders in the system with a last modified date
+SELECT * FROM OrderTracker;
+
+
+
+/*
+Cleanup / Reset Code
+
+DROP TRIGGER IF EXISTS current_order_count;
+
+DROP TRIGGER IF EXISTS deleted_history;
+
+DROP TABLE IF EXISTS OrderTracker;
+
+DROP TABLE IF EXISTS Orders;
+
+DROP TABLE IF EXISTS Customers;
+
+DROP TABLE IF EXISTS DeletedOrders;
+
+*/
