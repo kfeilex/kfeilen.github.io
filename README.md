@@ -1,4 +1,4 @@
-# Kenny Feilen's Portfolio
+# Introduction:
 Welcome to my Portfolio for the Computer Science Capstone course, CS 499. My name is Kenny Feilen. I have created this website on GitHub to showcase my journey at Southern New Hampshire University and the skills I gained along the way. I have included a professional self-assessment and a code review to highlight and analyze three projects I created at SNHU. The remaining three sections are dedicated to each project. Every project has its original code, my updated code, and an overview of the update or enhancements performed. This website will demonstrate how I met all the course outcomes and requirements for CS 499, Computer Science Capstone. Thank you for visiting.
 
 ## Table of contents:
@@ -96,7 +96,7 @@ This project also shows how I developed a security mindset that anticipates adve
 
 Working through this project and learning how triggers operate was interesting and different to what I had done before in MySQL. Triggers operate automatically in the background when they are activated. This is what makes them so useful, yet also more challenging to setup and debug. My first struggles were with Oracle and getting triggers to work correctly. My main issue was not being able to easily debug my code, while this was most likely user error, I had more success when I installed MySQL Workbench locally. While working through this project I started to see how powerful triggers can be. With the ability to keep track of total entries, without needing to query the entire database for the number can be time saving. The ability to add timestamps and user ID stamps to modifications and store those entries in log files can be very beneficial in troubleshooting and security monitoring. There is a lot that can be accomplished by setting up a trigger on a table. I also learned that triggers can be hard to monitor and troubleshoot. This can lead to situations where a trigger can loop or break your code without having an obvious failure point, making it difficult to troubleshoot. 
 
-Below is a link to this project once everything has been setup. I show Orders and OrderTracker as well as DeletedOrders before I run a delete query on the database. I will then rerun the same queries on those tables again to see the results of the trigger live. 
+Below is a link to this project once everything has been setup. I show Orders, OrderTracker and DeletedOrders before I run a delete query on the database. I will then rerun the same queries on those tables again to see the results of the trigger after the delete. The DeletedOrders table is no longer empty and the order tracker now reads 4. 
 
 #### [Trigger]( https://www.youtube.com/watch?v=X6vDXJVg-nw)
 
