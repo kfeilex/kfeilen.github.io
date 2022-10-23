@@ -1,7 +1,0 @@
-﻿  BinarySearchTree.cpp
-  CSVparser.cpp
-C:\Users\Skylake\Desktop\BST_2020\BST_2020\BinarySearchTree\BinarySearchTree\CSVparser.cpp(116,29): warning C4267: 'return': conversion from 'size_t' to 'unsigned int', possible loss of data
-C:\Users\Skylake\Desktop\BST_2020\BST_2020\BinarySearchTree\BinarySearchTree\CSVparser.cpp(121,28): warning C4267: 'return': conversion from 'size_t' to 'unsigned int', possible loss of data
-C:\Users\Skylake\Desktop\BST_2020\BST_2020\BinarySearchTree\BinarySearchTree\CSVparser.cpp(203,26): warning C4267: 'return': conversion from 'size_t' to 'unsigned int', possible loss of data
-  Generating Code...
-  BinarySearchTree.vcxproj -> C:\Users\Skylake\Desktop\BST_2020\BST_2020\BinarySearchTree\x64\Debug\BinarySearchTree.exe
