@@ -23,7 +23,7 @@ Additionally, I have included three projects in this portfolio that I will revie
 ## Code Review:
 This section of my portfolio consists of my code review which I have linked below. This code review as well as the comments throughout my projects and examples given in the professional self-assessment will show how I met the requirements for CS-499-01. Employ strategies for building collaborative environments that enable diverse audiences to support organizational decision making in the field of computer science. For each of my three projects I reviewed their functionality before any enhancements, performed an analysis of its code and then made decisions on updates or changes that would enhance the overall project. Taking a deeper look into the projects I have created line by line allowed me to look at what each project currently does and how it preforms those tasks. This allowed me to see other ways that I could improve the overall functionality in the future. This was a vital step to ensuring that my code met the needs of stakeholders and that it was written to be as efficient as possible. Preforming code reviews are a necessary step in the software development lifecycle (SDL). Looking for functionality, readability, formatting style, testing and so much more allows for a second set of eyes to ensure the deliverable will meet the stakeholder’s requirements. When transitioning into team environments, understanding the importance of code reviews and the collaboration they build among a team is vital. My code review is linked below.
 
-[Code Review]( https://youtu.be/AKVDHKq740c)
+### [Code Review Link]( https://youtu.be/AKVDHKq740c)
 
 
 ## Software Design and Engineering – Python Testing:
@@ -39,7 +39,10 @@ I expanded on this project and rewrote a section of it into Python to show testi
 4.	Created Test Class
 5.	Wrote tests for each function to ensure ValueError was raised
 
-This projects will demonstrate how I met the requirements for CS-499-04. Demonstrating an ability to use well-founded and innovative techniques, skills, and tools in computing practices for the purpose of implementing computer solutions that deliver value and accomplish industry-specific goals. I took my original project and rewrote the contact class in Python. I set constraints on each of the variables based on the requirements. Then I successfully implemented ten tests on the contact class to ensure that the variables provided were within the bounds of the requirements. 
+### [Original Code]( https://github.com/kfeilex/kfeilen.github.io/tree/main/Projects/1%20Artifact%20One/Original)
+### [Updated Code]( https://github.com/kfeilex/kfeilen.github.io/tree/main/Projects/1%20Artifact%20One/Updated/PythonTestProject)
+
+This projects demonstrates how I met the requirements for CS-499-04. Demonstrating an ability to use well-founded and innovative techniques, skills, and tools in computing practices for the purpose of implementing computer solutions that deliver value and accomplish industry-specific goals. I took my original project and rewrote the contact class in Python. I set constraints on each of the variables based on the requirements. Then I successfully implemented ten tests on the contact class to ensure that the variables provided were within the bounds of the requirements. 
 
 Working with this program was fun yet I had some challenges along the way, mainly with overthinking the problem. This is one thing that I struggled with occasionally in development, overthinking what I am trying to accomplish. I found once I took a step back, I could look at the problem from a different angle and move forward. I was able to enhance my project by writing tests in Python. Writing tests in Python instead of Java was more straight forward for me and ended up with cleaner looking code. I did struggle to get pytest working on my local machine and ended up utilizing unit tests in Python instead.
 
@@ -58,6 +61,9 @@ I included this example in my portfolio for a few reasons. Binary search trees a
 6.	Implemented and accounted for user input for Search.
 7.	Added a second menu with upon user input to call Display or Delete.
 8.	Added the ability to exit and return to the main menu.
+
+### [Original Code]( https://github.com/kfeilex/kfeilen.github.io/tree/main/Projects/2%20Artifact%20Two/Original/BST_2020)
+### [Updated Code]( https://github.com/kfeilex/kfeilen.github.io/tree/main/Projects/2%20Artifact%20Two/Updated/BinarySearchTree)
 
 The original and enhanced projects demonstrate how I met the requirements for CS-499-03. Design and evaluate computing solutions that solve a given problem using algorithmic principles and computer science practices and standards appropriate to its solution, while managing the trade-offs involved in design choices. I did this by creating a binary search tree in C++ to take in data from a CSV file by a key. I then performed the enhancements where I added a way for the user to interact with the data using their own search key, in this case a bid Id. If the bid Id was valid, it would return a screen prompting the user to display or delete the returned entry permanently. Accounting for user input in this project shows how the foundation for how to utilize a binary search tree and how that can be scaled to the needs of the business or stakeholder. This project also relates to solving problems and finding appropriate solutions to problems while considering the use case, and speed in which data is retrieved. There are other methods of sorting and searching data, yet a utilizing an algorithm is more efficient and understanding how they work is relevant in today’s software industry.
 
@@ -80,6 +86,9 @@ I included this project in my portfolio because I found the class a lot of fun a
 7.	Created a trigger on delete to do two things when activated.
     1.	Remove one from the Order Tracker table.
     2.	Create a backup of the deleted file in a table with the order information, user ID and timestamp of when the action was performed.
+
+### [Original Code]( https://github.com/kfeilex/kfeilen.github.io/tree/main/Projects/3%20Artifact%20Three/Original)
+### [Updated Code]( https://github.com/kfeilex/kfeilen.github.io/tree/main/Projects/3%20Artifact%20Three/Updated)
 
 Utilizing MySQL to create, modify and use triggers to monitor tables in this project and enhancements shows my ability to use well-founded and innovative techniques, skills, and tools in computing practices for the purpose of implementing computer solutions that deliver value and accomplish industry-specific goals, meeting the CS-499-04 requirements. I created a setup environment with tables and data to serve as a baseline environment. I then setup two different triggers that each perform a different task. One that backs-up deleted entries, the second keeps a running total of a database without needing to search it every time. By using a trigger to have a table keep a running total of orders in the system, I have accounted for different industry needs like time constraints on obtaining information. 
 
